@@ -41,16 +41,29 @@ class Card():
             self.suit = trumpSuit
             self.value = RIGHT_BOWER_VAL
 
-    def isTrump(self,trumpSuit):
+    def isTrump(self, trumpSuit):
         isTrump = False
         if self.suit == trumpSuit:
             isTrump = True
         return isTrump
 
-    def isBower(self,trumpSuit):
+    def isBower(self, trumpSuit):
         isBower = False
-        JACK = 11
         suitColors = {"C":"S", "S":"C", "H":"D", "D":"H"}
-        if self.value == JACK and ( (suitColors[self.suit] == trumpSuit) or (self.suit == trumpSuit) ):
+        if self.isJack() and ( (suitColors[self.suit] == trumpSuit) or (self.suit == trumpSuit) ):
             isBower = True
         return isBower
+
+    def isOffAce(self, suit):
+        isAce = False
+        ACE_VAL = 14
+        if self.value == ACE_VAL and self.suit != suit:
+            isAce = True
+        return isAce
+
+    def isJack(self):
+        isJack = False
+        JACK = 11
+        if self.value == JACK:
+            isJack = True
+        return isJack

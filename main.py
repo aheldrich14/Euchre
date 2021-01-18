@@ -1,8 +1,10 @@
 import card
+import deck
+import player
 
-c = card.Card(11, "C")
-c2 = card.Card(11,"S")
-c.updateTrump("C")
-c2.updateTrump("C")
-print((c < c2))
-print(c2)
+d = deck.Deck()
+pl1 = player.Player(0)
+for i in range(0,5):
+    pl1.hand.append(d.deal())
+print(pl1)
+print(d)
